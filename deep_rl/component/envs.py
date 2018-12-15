@@ -152,6 +152,7 @@ class DummyVecEnv(VecEnv):
         data = []
         for i in range(self.num_envs):
             obs, rew, done, info = self.envs[i].step(self.actions[i])
+            self.envs[i].render()
             if done:
                 obs = self.envs[i].reset()
             data.append([obs, rew, done, info])
