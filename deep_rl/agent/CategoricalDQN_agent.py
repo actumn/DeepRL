@@ -4,11 +4,9 @@
 # declaration at the top                                              #
 #######################################################################
 
-from ..network import *
-from ..component import *
-from ..utils import *
-import time
 from .BaseAgent import *
+from ..network import *
+
 
 class CategoricalDQNActor(BaseActor):
     def __init__(self, config):
@@ -37,6 +35,7 @@ class CategoricalDQNActor(BaseActor):
         self._total_steps += 1
         self._state = next_state
         return entry
+
 
 class CategoricalDQNAgent(BaseAgent):
     def __init__(self, config):

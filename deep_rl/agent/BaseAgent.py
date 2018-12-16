@@ -4,12 +4,12 @@
 # declaration at the top                                              #
 #######################################################################
 
-import torch
-import numpy as np
-from ..utils import *
-import torch.multiprocessing as mp
 from collections import deque
-import sys
+
+import torch.multiprocessing as mp
+
+from ..utils import *
+
 
 class BaseAgent:
     def __init__(self, config):
@@ -47,6 +47,7 @@ class BaseAgent:
         self.config.logger.info('evaluation episode return: %f(%f)' % (
             np.mean(rewards), np.std(rewards) / np.sqrt(len(rewards))))
 
+
 class BaseActor(mp.Process):
     STEP = 0
     RESET = 1
@@ -81,9 +82,7 @@ class BaseActor(mp.Process):
 
     def run(self):
         self._set_up()
-        torch.cuda.is_available()
-        config = self.config
-        self._task = config.task_fn()
+        self._task = self.config.task_fn()
 
         cache = deque([], maxlen=2)
         while True:

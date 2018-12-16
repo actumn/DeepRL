@@ -4,10 +4,9 @@
 # declaration at the top                                              #
 #######################################################################
 
-from ..network import *
-from ..component import *
-from ..utils import *
 from .BaseAgent import *
+from ..network import *
+
 
 class QuantileRegressionDQNActor(BaseActor):
     def __init__(self, config):
@@ -32,6 +31,7 @@ class QuantileRegressionDQNActor(BaseActor):
         self._total_steps += 1
         self._state = next_state
         return entry
+
 
 class QuantileRegressionDQNAgent(BaseAgent):
     def __init__(self, config):

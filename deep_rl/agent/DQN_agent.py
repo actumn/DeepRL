@@ -4,11 +4,9 @@
 # declaration at the top                                              #
 #######################################################################
 
-from ..network import *
-from ..component import *
-from ..utils import *
-import time
 from .BaseAgent import *
+from ..network import *
+
 
 class DQNActor(BaseActor):
     def __init__(self, config):
@@ -33,6 +31,7 @@ class DQNActor(BaseActor):
         self._total_steps += 1
         self._state = next_state
         return entry
+
 
 class DQNAgent(BaseAgent):
     def __init__(self, config):

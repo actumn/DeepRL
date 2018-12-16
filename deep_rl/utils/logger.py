@@ -4,13 +4,13 @@
 # declaration at the top                                              #
 #######################################################################
 
-from tensorboardX import SummaryWriter
-import os
-import numpy as np
-import torch
 import logging
+
+from tensorboardX import SummaryWriter
+
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s: %(message)s')
 from .misc import *
+
 
 def get_logger(tag=None, skip=False, level=logging.INFO):
     logger = logging.getLogger()
@@ -21,6 +21,7 @@ def get_logger(tag=None, skip=False, level=logging.INFO):
         fh.setLevel(level)
         logger.addHandler(fh)
     return Logger(logger, './tf_log/logger-%s-%s' % (tag, get_time_str()), skip)
+
 
 class Logger(object):
     def __init__(self, vanilla_logger, log_dir, skip=False):

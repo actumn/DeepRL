@@ -1,4 +1,3 @@
-
 import os
 
 import gym
@@ -19,6 +18,7 @@ try:
     import roboschool
 except ImportError:
     pass
+
 
 # adapted from https://github.com/ikostrikov/pytorch-a2c-ppo-acktr/blob/master/envs.py
 def make_env(env_id, seed, rank, log_dir, episode_life=True):
@@ -67,6 +67,7 @@ class TransposeImage(gym.ObservationWrapper):
 
     def observation(self, observation):
         return observation.transpose(2, 0, 1)
+
 
 # Allow tensorboard to record original episode return
 class Monitor(bench.Monitor):
@@ -165,6 +166,7 @@ class DummyVecEnv(VecEnv):
     def close(self):
         return
 
+
 class Task:
     def __init__(self,
                  name,
@@ -200,6 +202,7 @@ class Task:
         if isinstance(self.action_space, Box):
             actions = np.clip(actions, self.action_space.low, self.action_space.high)
         return self.env.step(actions)
+
 
 if __name__ == '__main__':
     task = Task('Hopper-v2', 5, single_process=False)
