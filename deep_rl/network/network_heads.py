@@ -4,7 +4,9 @@
 # declaration at the top                                              #
 #######################################################################
 
+import torch.nn.functional as F
 from .network_bodies import *
+from ..utils import *
 
 
 class VanillaNet(nn.Module, BaseNet):
